@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #1A1B3A; /* Deep space foundation */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #2D3561; /* Orbital ring depth */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #FFD700; /* gold */
+    --color-accent-foreground: #1A1B3A; /* Deep space foundation */
+    
+    /* Background Colors */
+    --color-background: #0F1020; /* Clean cosmic canvas */
+    --color-foreground: #FFFFFF; /* white */
+    
+    /* Surface Colors */
+    --color-card: #252847; /* Card elevation */
+    --color-card-foreground: #FFFFFF; /* white */
+    
+    /* Popover Colors */
+    --color-popover: #252847; /* Card elevation */
+    --color-popover-foreground: #FFFFFF; /* white */
+    
+    /* Muted Colors */
+    --color-muted: #2D3561; /* Orbital ring depth */
+    --color-muted-foreground: #B8C5D6; /* Supporting data */
+    
+    /* Destructive Colors */
+    --color-destructive: #FF4757; /* red */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Success Colors */
+    --color-success: #00D4AA; /* teal */
+    --color-success-foreground: #1A1B3A; /* Deep space foundation */
+    
+    /* Warning Colors */
+    --color-warning: #FF6B35; /* orange */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error Colors */
+    --color-error: #FF4757; /* red */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    /* Border Colors */
+    --color-border: rgba(255, 215, 0, 0.2); /* gold with opacity */
+    --color-input: rgba(255, 215, 0, 0.2); /* gold with opacity */
+    
+    /* Ring Colors */
+    --color-ring: #FFD700; /* gold */
+    
+    /* Text Colors */
+    --color-text-primary: #FFFFFF; /* white */
+    --color-text-secondary: #B8C5D6; /* gray-blue */
+    
+    /* Border Radius */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}

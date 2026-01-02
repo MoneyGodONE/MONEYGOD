@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import TopLeftOrgSwitch from './TopLeftOrgSwitch';
 import Header from './Header';
 import HeroSection from './HeroSection';
+import WebGLBackground from './WebGLBackground';
 import ProblemSection from './ProblemSection';
 import EcosystemShowcase from './EcosystemShowcase';
 import BenefitsSection from './BenefitsSection';
@@ -139,6 +140,7 @@ const LandingPageInteractive = () => {
 
   return (
     <>
+    <WebGLBackground />
     <TopLeftOrgSwitch />
       <Header />
       <HeroSection

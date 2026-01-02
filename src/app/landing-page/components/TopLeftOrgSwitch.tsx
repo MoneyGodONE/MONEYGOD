@@ -34,6 +34,7 @@ export default function TopLeftOrgSwitch() {
 
         <Link
           href="https://MoneyGod.ONE"
+          target="_blank"
           className="
             px-4 py-1.5 rounded-full
             border border-yellow-400/40

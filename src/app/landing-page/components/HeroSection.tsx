@@ -126,7 +126,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
   if (!isHydrated) {
     return (
-      <section className="relative min-h-[70vh] flex items-start justify-center bg-background overflow-hidden pt-16">
+      <section className="relative min-h-[70vh] flex items-start justify-center bg-background overflow-hidden -mt-32 pt-0">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
         <div className="relative z-10 text-center px-4">
           <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-accent/90 animate-planetFloat shadow-lg shadow-accent/40" />

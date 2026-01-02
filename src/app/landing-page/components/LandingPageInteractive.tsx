@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import TopLeftOrgSwitch from './TopLeftOrgSwitch';
 import Header from './Header';
 import HeroSection from './HeroSection';
 import ProblemSection from './ProblemSection';
@@ -138,6 +139,7 @@ const LandingPageInteractive = () => {
 
   return (
     <>
+    <TopLeftOrgSwitch />
       <Header />
       <HeroSection
         onExploreClick={handleExploreClick}

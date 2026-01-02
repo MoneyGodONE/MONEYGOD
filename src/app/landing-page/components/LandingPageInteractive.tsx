@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Header from './Header';
 import HeroSection from './HeroSection';
 import ProblemSection from './ProblemSection';
 import EcosystemShowcase from './EcosystemShowcase';

@@ -83,3 +83,16 @@
     font-family: 'Orbitron', sans-serif;
   }
 }
+
+@keyframes planetFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-planetFloat {
+  animation: planetFloat 4s ease-in-out infinite;
+}

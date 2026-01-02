@@ -138,6 +138,7 @@ const LandingPageInteractive = () => {
 
   return (
     <>
+      <Header />
       <HeroSection
         onExploreClick={handleExploreClick}
         onInvestmentClick={handleInvestmentClick} />

@@ -33,16 +33,18 @@ export default function WebGLBackground() {
       }
 
       void main() {
-        float b1 = band(vUv, 0.6, 0.25);
-        float b2 = band(vUv + 0.2, 0.4, 0.3);
-        float b3 = band(vUv + 0.4, 0.2, 0.35);
+  vec2 uv = vUv;
+  uv.y -= 0.08; // ↓ смещение вниз (~пол сантиметра визуально)
+ float b1 = band(uv, 0.6, 0.26);
+  float b2 = band(uv + 0.25, 0.35, 0.40);
+  float b3 = band(uv + 0.45, 0.2, 0.46);
 
-        vec3 color =
-          vec3(0.2, 1.0, 0.8) * b1 +
-          vec3(0.6, 0.4, 1.0) * b2 +
-          vec3(0.2, 0.8, 0.4) * b3;
+  vec3 color =
+    vec3(0.2, 1.0, 0.8) * b1 +
+    vec3(0.6, 0.4, 1.0) * b2 +
+    vec3(0.2, 0.8, 0.4) * b3;
 
-        gl_FragColor = vec4(color, 0.35);
+  gl_FragColor = vec4(color, 0.35);
       }
     `;
 

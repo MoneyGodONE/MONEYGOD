@@ -9,21 +9,22 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative z-10 flex flex-col items-center justify-center min-h-[45vh] text-center -mt-12 hidden md:flex">
+      <header className="relative z-20 flex items-center justify-between px-6 pt-6">
         {/* Logo */}
-        <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight text-white">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white flex items-center">
           Elysium
           <RotatingO />
         </h1>
 
-        {/* Burger — ТОЛЬКО MOBILE */}
-        <button className="md:hidden">
+        {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(true)}
-          className="md:hidden ml-4 text-yellow-400"
+          className="md:hidden relative z-50 p-2"
           aria-label="Open menu"
         >
-          ☰
+          <span className="block w-6 h-[2px] bg-white mb-1" />
+          <span className="block w-6 h-[2px] bg-white mb-1" />
+          <span className="block w-6 h-[2px] bg-white" />
         </button>
       </header>
 

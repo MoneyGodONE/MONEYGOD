@@ -11,7 +11,16 @@ export default function Header() {
     <>
       <header className="relative z-20 flex items-center justify-between px-6 pt-6">
         {/* Logo */}
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white flex items-center">
+        <h1 className="
+  text-3xl
+  md:text-5xl
+  font-extrabold
+  tracking-tight
+  text-white
+  flex
+  items-center
+  whitespace-nowrap
+">
           Elysium
           <RotatingO />
         </h1>

@@ -100,10 +100,17 @@ export default function WebGLBackground() {
     return () => window.removeEventListener('resize', resize);
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 -z-10 pointer-events-none"
-    />
+return (
+    <>
+      {/* Desktop WebGL */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 -z-10 pointer-events-none hidden md:block"
+      />
+
+      {/* Mobile fallback lines */}
+      <div className="fixed inset-x-0 top-0 z-0 md:hidden h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
+      <div className="fixed inset-x-0 bottom-0 z-0 md:hidden h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
+    </>
   );
 }

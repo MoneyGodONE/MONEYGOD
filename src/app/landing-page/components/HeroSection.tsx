@@ -16,7 +16,8 @@ export default function HeroSection({ onExploreClick, onInvestmentClick }: HeroP
           Rotating O
         </h1>
 
-        {/* Мобильная версия: поднимаем Discover ниже */}
+        {/* Кружочек MGO можно позиционировать через WebGLBackground */}
+        {/* Discover под Rotating O */}
         <h2 className="mt-4 text-3xl md:text-5xl font-bold text-center text-text-primary md:mt-8">
           Discover the Future of Crypto Ecosystems
         </h2>
@@ -28,13 +29,13 @@ export default function HeroSection({ onExploreClick, onInvestmentClick }: HeroP
           onClick={onExploreClick}
           className="px-6 py-3 font-bold rounded-lg bg-accent text-background hover:bg-yellow-500 transition"
         >
-          Explore
+          Explore Ecosystem
         </button>
         <button
           onClick={onInvestmentClick}
           className="px-6 py-3 font-bold rounded-lg border-2 border-accent text-accent hover:bg-accent hover:text-background transition"
         >
-          Investment
+          Investment Opportunities
         </button>
       </div>
     </section>

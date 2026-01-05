@@ -64,16 +64,12 @@ const LandingPageInteractive = () => {
 
   const handleExploreClick = () => {
     const ecosystemSection = document.getElementById('ecosystem-section');
-    if (ecosystemSection) {
-      ecosystemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (ecosystemSection) ecosystemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleInvestmentClick = () => {
     const investmentSection = document.getElementById('investment-section');
-    if (investmentSection) {
-      investmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (investmentSection) investmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleProjectClick = (project: any) => {
@@ -97,25 +93,24 @@ const LandingPageInteractive = () => {
         fdv: '$2.45B'
       },
       team: [
-      {
-        name: 'Alex Johnson',
-        role: 'Founder & CEO',
-        avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_18276e8bd-1765872905794.png",
-        credentials: 'Former VP at Coinbase, 10+ years blockchain experience'
-      },
-      {
-        name: 'Sarah Chen',
-        role: 'CTO',
-        avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_12f2fa675-1763295678226.png",
-        credentials: 'Ex-Google engineer, Smart contract security expert'
-      }],
-
+        {
+          name: 'Alex Johnson',
+          role: 'Founder & CEO',
+          avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_18276e8bd-1765872905794.png",
+          credentials: 'Former VP at Coinbase, 10+ years blockchain experience'
+        },
+        {
+          name: 'Sarah Chen',
+          role: 'CTO',
+          avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_12f2fa675-1763295678226.png",
+          credentials: 'Ex-Google engineer, Smart contract security expert'
+        }
+      ],
       website: 'https://example.com',
       whitepaper: 'https://example.com/whitepaper',
       auditReport: 'https://example.com/audit',
       connections: project.connections
     };
-
     setSelectedProject(fullProjectData);
     setIsModalOpen(true);
   };
@@ -134,106 +129,92 @@ const LandingPageInteractive = () => {
             Loading MGO Orbital...
           </p>
         </div>
-      </div>);
-
+      </div>
+    );
   }
 
   return (
-  <div className="min-h-screen flex flex-col bg-background">
-    <WebGLBackground />
-    <TopLeftOrgSwitch />
-    <Header />
+    <div className="min-h-screen flex flex-col bg-background">
+      <WebGLBackground />
+      <TopLeftOrgSwitch />
+      <Header />
 
-    {/* ОСНОВНОЙ КОНТЕНТ */}
-    <main className="flex-grow">
-      <HeroSection
-        onExploreClick={handleExploreClick}
-        onInvestmentClick={handleInvestmentClick}
-      />
+      <main className="flex-grow">
+        <HeroSection onExploreClick={handleExploreClick} onInvestmentClick={handleInvestmentClick} />
+        <ProblemSection />
+        <EcosystemShowcase onProjectClick={handleProjectClick} />
+        <BenefitsSection />
+        <TestimonialsSection />
+        <SecuritySection />
+        <RoadmapSection />
+        <ComparisonSection />
+        <InvestmentTiersSection />
 
-      <ProblemSection />
-      <EcosystemShowcase onProjectClick={handleProjectClick} />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <SecuritySection />
-      <RoadmapSection />
-      <ComparisonSection />
-      <InvestmentTiersSection />
+        <div className="py-24 px-4 bg-background">
+          <InvestmentCalculator />
+        </div>
 
-      {/* Calculator */}
-      <div className="py-24 px-4 bg-background">
-        ...
-      </div>
+        <FAQSection />
+        <CommunitySection />
+        <CTASection />
 
-      <FAQSection />
-      <CommunitySection />
-      <CTASection />
-      <section className="bg-card/30 border-t border-border">
-  <div
-  className="
-    max-w-7xl mx-auto
-    px-6 py-16
-    grid grid-cols-1
-    sm:grid-cols-2
-    md:grid-cols-4
-    gap-10
-    text-sm
-    text-center
-    md:text-left
-  "
->
-    <div>
-      <h4 className="font-orbitron text-lg mb-4">Platform</h4>
-      <ul className="space-y-2 text-text-secondary">
-        <li>Ecosystem Explorer</li>
-        <li>Investment Dashboard</li>
-        <li>Project Analytics</li>
-        <li>API Documentation</li>
-      </ul>
-    </div>
+        {/* Footer links section */}
+        <section className="bg-card/30 border-t border-border">
+          <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm text-center md:text-left">
+            <div>
+              <h4 className="font-orbitron text-lg mb-4">Platform</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li>Ecosystem Explorer</li>
+                <li>Investment Dashboard</li>
+                <li>Project Analytics</li>
+                <li>API Documentation</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-orbitron text-lg mb-4">Resources</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li>Whitepaper</li>
+                <li>Security Audits</li>
+                <li>Help Center</li>
+                <li>Blog</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-orbitron text-lg mb-4">Company</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li>About Us</li>
+                <li>Careers</li>
+                <li>Press Kit</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-orbitron text-lg mb-4">Community</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li>Twitter / X</li>
+                <li>Discord</li>
+                <li>Telegram</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
 
-    <div>
-      <h4 className="font-orbitron text-lg mb-4">Resources</h4>
-      <ul className="space-y-2 text-text-secondary">
-        <li>Whitepaper</li>
-        <li>Security Audits</li>
-        <li>Help Center</li>
-        <li>Blog</li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 className="font-orbitron text-lg mb-4">Company</h4>
-      <ul className="space-y-2 text-text-secondary">
-        <li>About Us</li>
-        <li>Careers</li>
-        <li>Press Kit</li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 className="font-orbitron text-lg mb-4">Community</h4>
-      <ul className="space-y-2 text-text-secondary">
-        <li>Twitter / X</li>
-        <li>Discord</li>
-        <li>Telegram</li>
-      </ul>
-    </div>
-  </div>
-</section>
+      {/* Navigation before footer */}
+      <nav className="w-full flex justify-center py-10">
+        <AnchorNavigation />
+      </nav>
 
       <FooterSection />
 
-    {/* 🔥 МЕНЮ ПЕРЕД ФУТЕРОМ */}
-    <nav className="w-full flex justify-center py-10">
-      <AnchorNavigation />
-    </nav>
+      <ProgressIndicator />
 
-    <FooterSection />
-
-    <ProgressIndicator />
-    <OrbitalProjectModal ... />
-  </div>
-);
+      <OrbitalProjectModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        project={selectedProject}
+      />
+    </div>
+  );
+};
 
 export default LandingPageInteractive;

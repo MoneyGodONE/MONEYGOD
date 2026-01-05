@@ -104,9 +104,11 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         overflow-hidden
       "
     >
-      {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
+      {/* Desktop gradient */}
+<div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background hidden md:block" />
+
+{/* Mobile Solana-style gradient */}
+<div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-background md:hidden" />
 
       {/* Canvas */}
       <canvas

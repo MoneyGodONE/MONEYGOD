@@ -9,14 +9,24 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative z-20 flex items-center justify-between px-6 pt-6">
+      <div className="flex flex-col md:flex-row items-center md:items-center gap-1 md:gap-2">
         {/* Logo */}
-        <h1 className="font-orbitron text-xl font-bold">
+         <div className="flex items-center gap-2">
+           <span className="text-xl md:text-2xl font-orbitron font-bold">
   Elysium
-  <span className="hidden md:inline">
-    <RotatingO />
   </span>
-</h1>
+           </div>
+  {/* RotatingO */}
+  <div
+    className="
+      mt-1 md:mt-0
+      scale-75 md:scale-100
+      origin-top
+    "
+  >
+    <RotatingO />
+  </div>
+</div>
 
         {/* Mobile menu button */}
         <button

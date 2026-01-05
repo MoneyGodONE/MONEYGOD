@@ -176,7 +176,8 @@ const LandingPageInteractive = () => {
       <CommunitySection />
       <CTASection />
       <section className="bg-card/30 border-t border-border">
-  <div className="
+  <div
+  className="
     max-w-7xl mx-auto
     px-6 py-16
     grid grid-cols-1
@@ -184,7 +185,10 @@ const LandingPageInteractive = () => {
     md:grid-cols-4
     gap-10
     text-sm
-  ">
+    text-center
+    md:text-left
+  "
+>
     <div>
       <h4 className="font-orbitron text-lg mb-4">Platform</h4>
       <ul className="space-y-2 text-text-secondary">

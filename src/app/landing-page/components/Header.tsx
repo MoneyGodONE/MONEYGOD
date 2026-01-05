@@ -17,6 +17,7 @@ export default function Header() {
         </h1>
 
         {/* Burger — ТОЛЬКО MOBILE */}
+        <button className="md:hidden">
         <button
           onClick={() => setMenuOpen(true)}
           className="md:hidden ml-4 text-yellow-400"

@@ -228,6 +228,7 @@ const LandingPageInteractive = () => {
     </div>
   </div>
 </section>
+<ul className="space-y-2 text-text-secondary text-center md:text-left">
 
       <FooterSection />
 

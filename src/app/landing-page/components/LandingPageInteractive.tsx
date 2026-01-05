@@ -175,6 +175,56 @@ const LandingPageInteractive = () => {
       <FAQSection />
       <CommunitySection />
       <CTASection />
+      <section className="bg-card/30 border-t border-border">
+  <div className="
+    max-w-7xl mx-auto
+    px-6 py-16
+    grid grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-4
+    gap-10
+    text-sm
+  ">
+    <div>
+      <h4 className="font-orbitron text-lg mb-4">Platform</h4>
+      <ul className="space-y-2 text-text-secondary">
+        <li>Ecosystem Explorer</li>
+        <li>Investment Dashboard</li>
+        <li>Project Analytics</li>
+        <li>API Documentation</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 className="font-orbitron text-lg mb-4">Resources</h4>
+      <ul className="space-y-2 text-text-secondary">
+        <li>Whitepaper</li>
+        <li>Security Audits</li>
+        <li>Help Center</li>
+        <li>Blog</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 className="font-orbitron text-lg mb-4">Company</h4>
+      <ul className="space-y-2 text-text-secondary">
+        <li>About Us</li>
+        <li>Careers</li>
+        <li>Press Kit</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 className="font-orbitron text-lg mb-4">Community</h4>
+      <ul className="space-y-2 text-text-secondary">
+        <li>Twitter / X</li>
+        <li>Discord</li>
+        <li>Telegram</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
       <FooterSection />
 
       <AnchorNavigation />

@@ -147,14 +147,17 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   bg-background
   overflow-hidden
 ">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
       
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         aria-label="Animated orbital visualization of MGO ecosystem projects"
       />
-
+      
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
+            
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         <h1 className="
   font-orbitron

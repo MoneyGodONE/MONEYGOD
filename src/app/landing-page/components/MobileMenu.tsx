@@ -24,13 +24,13 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
     <>
       {/* Overlay */}
       <div
-        onClick={onClose}
+  onClick={onClose}
   className={`
     fixed inset-0 z-40
-    bg-black/30
-    backdrop-blur-sm
+    bg-black/20
+    backdrop-blur-md
     transition-opacity
-    ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+    ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}
     md:hidden
   `}
 />

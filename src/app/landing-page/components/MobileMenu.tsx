@@ -37,16 +37,17 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
 
       {/* Slide panel */}
       <aside
-        className={`
-          fixed top-0 right-0 z-50
-          h-full w-[85%] max-w-sm
-          bg-gradient-to-b from-[#161836] to-[#0d0f24]
-          border-l border-white/10
-          transform transition-transform duration-300 ease-out
-          ${open ? 'translate-x-0' : 'translate-x-full'}
-          md:hidden
-        `}
-      >
+  className={`
+    fixed top-0 right-0 z-50
+    h-full w-[85%] max-w-sm
+    bg-gradient-to-b from-[#161836] to-[#0d0f24]
+    border-l border-white/10
+    backdrop-blur-xl
+    transform transition-transform duration-300 ease-out
+    ${open ? 'translate-x-0' : 'translate-x-full'}
+    md:hidden
+  `}
+>
         {/* Close button */}
         <button
           onClick={onClose}

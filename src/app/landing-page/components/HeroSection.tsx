@@ -40,5 +40,3 @@ export default function HeroSection({ onExploreClick, onInvestmentClick }: HeroP
     </section>
   );
 }
-
-export default HeroSection;

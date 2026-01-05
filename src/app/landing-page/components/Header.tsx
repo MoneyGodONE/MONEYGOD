@@ -1,37 +1,33 @@
 'use client';
 
+import { useState } from 'react';
 import RotatingO from './RotatingO';
+import MobileMenu from './MobileMenu';
 
 export default function Header() {
-  return (
-    <header className="
-      relative z-20
-      flex flex-col items-center justify-center
-      pt-24 pb-12
-      text-center
-      md:min-h-[45vh]
-      md:pt-0
-    ">
-      <h1 className="
-        text-4xl
-        sm:text-5xl
-        md:text-7xl
-        font-extrabold
-        tracking-tight
-        text-white
-      ">
-        Elysium <RotatingO />
-      </h1>
-      <div className="flex flex-col items-center gap-4 md:flex-row md:gap-8">
-  <Logo />
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  <div className="flex flex-col items-center text-sm text-yellow-400 md:flex-row md:gap-4">
-    <span>Foundation</span>
-    <span className="hidden md:inline">|</span>
-    <span className="opacity-70">Corporation</span>
-  </div>
-</div>
-      
-    </header>
+  return (
+    <>
+      <header className="relative z-20 flex items-center justify-between px-4 py-4 md:justify-center">
+        {/* Logo */}
+        <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight text-white">
+          Elysium
+          <RotatingO />
+        </h1>
+
+        {/* Burger — ТОЛЬКО MOBILE */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          className="md:hidden ml-4 text-yellow-400"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+      </header>
+
+      {/* Mobile menu */}
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }

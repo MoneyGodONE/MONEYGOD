@@ -92,32 +92,30 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   }
 
   return (
-    <section
-      className="
-        relative
-        min-h-[70vh]
-        md:min-h-[85vh]
-        flex
-        items-center
-        justify-center
-        bg-background
-        overflow-hidden
-      "
-    >
-      {/* Desktop gradient */}
-<div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background hidden md:block" />
+  <section
+    className="
+      relative
+      min-h-[70vh]
+      md:min-h-[85vh]
+      flex items-center justify-center
+      bg-background
+      overflow-hidden
+    "
+  >
+    {/* Desktop gradient */}
+    <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-primary/20 to-background" />
 
-{/* Mobile Solana-style gradient */}
-<div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-background md:hidden" />
+    {/* Mobile Solana gradient */}
+    <div className="absolute inset-0 md:hidden bg-gradient-to-b from-primary/30 via-transparent to-background" />
 
-      {/* Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        aria-hidden
-      />
+    {/* Canvas MUST be here */}
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full z-0"
+      aria-label="Animated orbital visualization"
+    />
 
-      {/* Content */}
+    {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         <h1 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-7xl text-text-primary mb-6">
           Discover the Future of Crypto Ecosystems

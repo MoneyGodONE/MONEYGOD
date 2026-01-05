@@ -91,33 +91,82 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     );
   }
 
-  return (
-  <section
-    className="
-      relative
-      min-h-[85vh]
-      flex items-center justify-center
-      bg-background
-      overflow-hidden
-    "
-  >
-    {/* Solana-style gradients */}
-    <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
-    <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
+ return (
+    <section
+      className="
+        relative
+        min-h-[85vh]
+        flex items-center justify-center
+        bg-background
+        overflow-hidden
+      "
+    >
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
 
-    {/* Canvas MUST be inside section */}
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      aria-label="Animated orbital visualization of MGO ecosystem projects"
-    />
+      {/* Canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        aria-label="Animated orbital visualization of MGO ecosystem projects"
+      />
 
-    {/* Content */}
-    <div className="relative z-20 max-w-4xl mx-auto text-center px-4">
-      {/* ...твой контент БЕЗ изменений */}
-    </div>
-  </section>
-);
+      {/* Content */}
+      <div className="relative z-20 max-w-4xl mx-auto text-center px-4">
+        <h1 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-7xl text-text-primary mb-6">
+          Discover the Future of Crypto Ecosystems
+        </h1>
+
+        <p className="font-source-sans text-lg md:text-2xl text-text-secondary mb-10">
+          First orbital visualization revealing interconnected blockchain projects
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <button
+            onClick={onExploreClick}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg shadow-cta transition-all duration-250 flex items-center justify-center gap-2"
+          >
+            Explore Ecosystem
+            <Icon name="ArrowRightIcon" size={20} />
+          </button>
+
+          <button
+            onClick={onInvestmentClick}
+            className="bg-secondary hover:bg-secondary/80 text-secondary-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg border border-border transition-all duration-250"
+          >
+            Investment Opportunities
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
+            <p className="font-orbitron font-bold text-4xl text-accent mb-2">47</p>
+            <p className="font-space-mono text-sm text-text-secondary">
+              Total Projects
+            </p>
+          </div>
+
+          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
+            <p className="font-orbitron font-bold text-4xl text-accent mb-2">
+              $2.3B
+            </p>
+            <p className="font-space-mono text-sm text-text-secondary">
+              Combined Market Cap
+            </p>
+          </div>
+
+          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
+            <p className="font-orbitron font-bold text-4xl text-accent mb-2">
+              156K
+            </p>
+            <p className="font-space-mono text-sm text-text-secondary">
+              Active Users
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

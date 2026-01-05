@@ -22,6 +22,16 @@ export default function Header() {
       ">
         Elysium <RotatingO />
       </h1>
+      <div className="flex flex-col items-center gap-4 md:flex-row md:gap-8">
+  <Logo />
+
+  <div className="flex flex-col items-center text-sm text-yellow-400 md:flex-row md:gap-4">
+    <span>Foundation</span>
+    <span className="hidden md:inline">|</span>
+    <span className="opacity-70">Corporation</span>
+  </div>
+</div>
+      
     </header>
   );
 }

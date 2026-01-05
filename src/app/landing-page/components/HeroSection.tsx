@@ -8,10 +8,23 @@ interface HeroSectionProps {
   onInvestmentClick: () => void;
 }
 
+interface Satellite {
+  angle: number;
+  speed: number;
+  radius: number;
+  color: string;
+}
+
 const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isHydrated, setIsHydrated] = useState(false);
   const animationFrameRef = useRef<number>();
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  const satellites: Satellite[] = [
+    { angle: 0, speed: 0.008, radius: 150, color: '#FFD700' },
+    { angle: 1, speed: 0.006, radius: 180, color: '#00D4AA' },
+    { angle: 2, speed: 0.01, radius: 210, color: '#FF6B35' },
+  ];
 
   useEffect(() => {
     setIsHydrated(true);
@@ -26,35 +39,43 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+    let centerX = 0;
+    let centerY = 0;
+
+    const resizeCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      centerX = canvas.offsetWidth / 2;
+      centerY = canvas.offsetHeight / 2;
     };
 
-    resize();
-    window.addEventListener('resize', resize);
-
-    const centerX = () => canvas.width / 2;
-    const centerY = () => canvas.height / 2;
-
-    let angle = 0;
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Orbital ring
+      // ORBITS
       ctx.strokeStyle = 'rgba(255,215,0,0.15)';
-      ctx.beginPath();
-      ctx.arc(centerX(), centerY(), 150, 0, Math.PI * 2);
-      ctx.stroke();
+      ctx.lineWidth = 1;
+      [150, 180, 210].forEach((r) => {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+        ctx.stroke();
+      });
 
-      // Center core
+      // CENTER CORE
       const gradient = ctx.createRadialGradient(
-        centerX(),
-        centerY(),
+        centerX,
+        centerY,
         0,
-        centerX(),
-        centerY(),
+        centerX,
+        centerY,
         40
       );
       gradient.addColorStop(0, '#FFD700');
@@ -62,24 +83,44 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(centerX(), centerY(), 40, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.fillStyle = '#1A1B3A';
       ctx.font = 'bold 16px Orbitron';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('MGO', centerX(), centerY());
+      ctx.fillText('MGO', centerX, centerY);
 
-      angle += 0.01;
+      // PLANETS
+      satellites.forEach((sat) => {
+        sat.angle += sat.speed;
+
+        const x = centerX + Math.cos(sat.angle) * sat.radius;
+        const y = centerY + Math.sin(sat.angle) * sat.radius;
+
+        ctx.strokeStyle = 'rgba(255,215,0,0.25)';
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        ctx.fillStyle = sat.color;
+        ctx.beginPath();
+        ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, [isHydrated]);
 
@@ -91,28 +132,19 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     );
   }
 
- return (
-    <section
-      className="
-        relative
-        min-h-[85vh]
-        flex items-center justify-center
-        bg-background
-        overflow-hidden
-      "
-    >
-      {/* Background gradients */}
+  return (
+    <section className="relative min-h-[85vh] flex items-center justify-center bg-background overflow-hidden">
+      {/* BACKGROUND */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
 
-      {/* Canvas */}
+      {/* CANVAS */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        aria-label="Animated orbital visualization of MGO ecosystem projects"
+        className="absolute inset-0 w-full h-full hidden md:block"
+        aria-label="Orbital visualization"
       />
 
-      {/* Content */}
+      {/* CONTENT */}
       <div className="relative z-20 max-w-4xl mx-auto text-center px-4">
         <h1 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-7xl text-text-primary mb-6">
           Discover the Future of Crypto Ecosystems
@@ -125,7 +157,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <button
             onClick={onExploreClick}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg shadow-cta transition-all duration-250 flex items-center justify-center gap-2"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg shadow-cta flex items-center gap-2"
           >
             Explore Ecosystem
             <Icon name="ArrowRightIcon" size={20} />
@@ -133,37 +165,10 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
           <button
             onClick={onInvestmentClick}
-            className="bg-secondary hover:bg-secondary/80 text-secondary-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg border border-border transition-all duration-250"
+            className="bg-secondary hover:bg-secondary/80 text-secondary-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg border border-border"
           >
             Investment Opportunities
           </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
-            <p className="font-orbitron font-bold text-4xl text-accent mb-2">47</p>
-            <p className="font-space-mono text-sm text-text-secondary">
-              Total Projects
-            </p>
-          </div>
-
-          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
-            <p className="font-orbitron font-bold text-4xl text-accent mb-2">
-              $2.3B
-            </p>
-            <p className="font-space-mono text-sm text-text-secondary">
-              Combined Market Cap
-            </p>
-          </div>
-
-          <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
-            <p className="font-orbitron font-bold text-4xl text-accent mb-2">
-              156K
-            </p>
-            <p className="font-space-mono text-sm text-text-secondary">
-              Active Users
-            </p>
-          </div>
         </div>
       </div>
     </section>

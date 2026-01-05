@@ -139,14 +139,13 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   }
 
   return (
-    <section className="
-  relative
-  min-h-[70vh]
-  md:min-h-[85vh]
-  flex items-center justify-center
-  bg-background
-  overflow-hidden
-">
+    <div className="
+  absolute inset-0
+  bg-gradient-to-b
+  from-primary/30
+  md:from-primary/20
+  to-background
+" />
       
       <canvas
         ref={canvasRef}

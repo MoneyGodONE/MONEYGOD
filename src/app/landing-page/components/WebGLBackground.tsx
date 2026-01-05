@@ -7,7 +7,10 @@ export default function WebGLBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 768) {
+  canvas.style.display = 'none';
+  return;
+}
     if (!canvas) return;
 
     const gl = canvas.getContext('webgl');

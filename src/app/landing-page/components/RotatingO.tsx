@@ -36,7 +36,16 @@ export default function RotatingO() {
   }, []);
 
   return (
-    <span className="relative inline-block ml-2 w-[220px] h-[1em] align-baseline">
+    <span className="
+  relative
+  inline-block
+  ml-2
+  w-[220px]
+  h-[1em]
+  align-baseline
+  mt-2
+  md:mt-0
+">
       <AnimatePresence mode="wait">
         <motion.span
           key={WORDS[index]}

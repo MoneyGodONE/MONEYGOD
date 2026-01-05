@@ -95,74 +95,29 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   <section
     className="
       relative
-      min-h-[70vh]
-      md:min-h-[85vh]
+      min-h-[85vh]
       flex items-center justify-center
       bg-background
       overflow-hidden
     "
   >
-    {/* Desktop gradient */}
-    <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-primary/20 to-background" />
+    {/* Solana-style gradients */}
+    <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
+    <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-background md:hidden" />
 
-    {/* Mobile Solana gradient */}
-    <div className="absolute inset-0 md:hidden bg-gradient-to-b from-primary/30 via-transparent to-background" />
-
-    {/* Canvas MUST be here */}
+    {/* Canvas MUST be inside section */}
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full z-0"
-      aria-label="Animated orbital visualization"
+      className="absolute inset-0 w-full h-full"
+      aria-label="Animated orbital visualization of MGO ecosystem projects"
     />
 
-    {/* CONTENT */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-        <h1 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-7xl text-text-primary mb-6">
-          Discover the Future of Crypto Ecosystems
-        </h1>
-
-        <p className="font-source-sans text-lg md:text-2xl text-text-secondary mb-10">
-          First orbital visualization revealing interconnected blockchain projects
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <button
-            onClick={onExploreClick}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg shadow-cta flex items-center justify-center gap-2"
-          >
-            Explore Ecosystem
-            <Icon name="ArrowRightIcon" size={20} />
-          </button>
-
-          <button
-            onClick={onInvestmentClick}
-            className="bg-secondary hover:bg-secondary/80 text-secondary-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg border border-border"
-          >
-            Investment Opportunities
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-          {[
-            ['47', 'Total Projects'],
-            ['$2.3B', 'Combined Market Cap'],
-            ['156K', 'Active Users'],
-          ].map(([value, label]) => (
-            <div
-              key={label}
-              className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border"
-            >
-              <p className="font-orbitron font-bold text-4xl text-accent mb-2">
-                {value}
-              </p>
-              <p className="font-space-mono text-sm text-text-secondary">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    {/* Content */}
+    <div className="relative z-20 max-w-4xl mx-auto text-center px-4">
+      {/* ...твой контент БЕЗ изменений */}
+    </div>
+  </section>
+);
   );
 };
 

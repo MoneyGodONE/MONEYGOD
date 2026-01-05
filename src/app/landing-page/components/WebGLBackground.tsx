@@ -7,9 +7,6 @@ export default function WebGLBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (window.innerWidth < 768) {
-  canvas.style.display = 'none';
-  return;
 }
     if (!canvas) return;
 

@@ -147,7 +147,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   justify-center
   bg-background
   overflow-hidden
-  -mt-40
+  pt-32
 ">
       <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background" />
       

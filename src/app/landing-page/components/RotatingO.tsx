@@ -36,7 +36,7 @@ export default function RotatingO() {
   }, []);
 
   return (
-    <span className="relative inline-block ml-2 w-[220px] h-[1em] align-baseline">
+    <span className="relative inline-flex ml-2 min-w-[3ch] h-[1em] align-baseline overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.span
           key={WORDS[index]}
@@ -44,7 +44,7 @@ export default function RotatingO() {
           animate={{ opacity: 1, rotateX: 0 }}
           exit={{ opacity: 0, rotateX: -90 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="absolute left-0 top-0 text-yellow-400 font-bold"
+          className="absolute left-0 top-0 whitespace-nowrap text-yellow-400 font-bold"
           style={{ transformOrigin: '50% 50%' }}
         >
           {WORDS[index]}

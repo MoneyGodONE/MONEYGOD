@@ -12,15 +12,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         
         {/* Logo + RotatingO */}
-        <div className="flex flex-col md:flex-row items-center gap-1 md:gap-2">
-          <span className="text-xl md:text-2xl font-orbitron font-bold text-white">
-            Elysium
-          </span>
+        <div className="flex items-center gap-2">
+  <span className="text-xl md:text-2xl font-orbitron font-bold">
+    Elysium
+  </span>
 
-          <div className="mt-1 md:mt-0 scale-75 md:scale-100 origin-top">
-            <RotatingO />
-          </div>
-        </div>
+  <div className="flex items-center">
+    <RotatingO />
+  </div>
+</div>
 
         {/* Mobile menu button */}
         <button

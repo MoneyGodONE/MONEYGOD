@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative z-20 flex items-center justify-between px-4 py-4 md:justify-center">
+      <header className="relative z-10 flex flex-col items-center justify-center min-h-[45vh] text-center -mt-12 hidden md:flex">
         {/* Logo */}
         <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight text-white">
           Elysium

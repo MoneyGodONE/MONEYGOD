@@ -139,13 +139,17 @@ const LandingPageInteractive = () => {
   }
 
   return (
-    <>
+  <div className="min-h-screen flex flex-col bg-background">
     <WebGLBackground />
     <TopLeftOrgSwitch />
-      <Header />
+    <Header />
+
+    {/* ОСНОВНОЙ КОНТЕНТ */}
+    <main className="flex-grow">
       <HeroSection
         onExploreClick={handleExploreClick}
-        onInvestmentClick={handleInvestmentClick} />
+        onInvestmentClick={handleInvestmentClick}
+      />
 
       <ProblemSection />
       <EcosystemShowcase onProjectClick={handleProjectClick} />
@@ -155,21 +159,10 @@ const LandingPageInteractive = () => {
       <RoadmapSection />
       <ComparisonSection />
       <InvestmentTiersSection />
-      
+
+      {/* Calculator */}
       <div className="py-24 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-orbitron font-bold text-4xl md:text-5xl text-text-primary mb-6">
-              Calculate Your Potential Returns
-            </h2>
-            <p className="font-source-sans text-xl text-text-secondary max-w-3xl mx-auto">
-              Use our interactive calculator to estimate your investment growth
-            </p>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            <InvestmentCalculator />
-          </div>
-        </div>
+        ...
       </div>
 
       <FAQSection />
@@ -231,16 +224,16 @@ const LandingPageInteractive = () => {
 
       <FooterSection />
 
+    {/* 🔥 МЕНЮ ПЕРЕД ФУТЕРОМ */}
+    <nav className="w-full flex justify-center py-10">
       <AnchorNavigation />
-      <ProgressIndicator />
+    </nav>
 
-      <OrbitalProjectModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        project={selectedProject} />
+    <FooterSection />
 
-    </>);
-
-};
+    <ProgressIndicator />
+    <OrbitalProjectModal ... />
+  </div>
+);
 
 export default LandingPageInteractive;

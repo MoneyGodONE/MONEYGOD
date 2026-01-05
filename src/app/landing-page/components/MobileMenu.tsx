@@ -1,53 +1,38 @@
 'use client';
 
-import { useEffect } from 'react';
-
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
 }
 
 export default function MobileMenu({ open, onClose }: MobileMenuProps) {
-  // Close on ESC
-  useEffect(() => {
-    if (!open) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
-
   return (
     <>
-      {/* Overlay */}
+      {/* Blur overlay (NO black wall) */}
       <div
-  onClick={onClose}
-  className={`
-    fixed inset-0 z-40
-    bg-black/20
-    backdrop-blur-md
-    transition-opacity
-    ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-    md:hidden
-  `}
-/>
+        onClick={onClose}
+        className={`
+          fixed inset-0 z-40
+          backdrop-blur-xl
+          bg-black/10
+          transition-opacity duration-300
+          ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+          md:hidden
+        `}
+      />
 
       {/* Slide panel */}
       <aside
-  className={`
-    fixed top-0 right-0 z-50
-    h-full w-[85%] max-w-sm
-    bg-gradient-to-b from-[#161836] to-[#0d0f24]
-    border-l border-white/10
-    backdrop-blur-xl
-    transform transition-transform duration-300 ease-out
-    ${open ? 'translate-x-0' : 'translate-x-full'}
-    md:hidden
-  `}
->
+        className={`
+          fixed top-0 right-0 z-50
+          h-full w-[85%] max-w-sm
+          bg-gradient-to-b from-[#161836] to-[#0d0f24]
+          border-l border-white/10
+          transform transition-transform duration-300 ease-out
+          ${open ? 'translate-x-0' : 'translate-x-full'}
+          md:hidden
+        `}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
@@ -61,26 +46,14 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           ✕
         </button>
 
-        {/* Content */}
-        <div className="h-full flex flex-col justify-center px-8 text-center">
-          <nav className="space-y-8 text-xl font-rajdhani text-white">
-            <a href="#ecosystem" onClick={onClose} className="block hover:text-yellow-400">
-              Ecosystem
-            </a>
-            <a href="#investment" onClick={onClose} className="block hover:text-yellow-400">
-              Investment
-            </a>
-            <a href="#roadmap" onClick={onClose} className="block hover:text-yellow-400">
-              Roadmap
-            </a>
-            <a href="#security" onClick={onClose} className="block hover:text-yellow-400">
-              Security
-            </a>
-            <a href="#community" onClick={onClose} className="block hover:text-yellow-400">
-              Community
-            </a>
-          </nav>
-        </div>
+        {/* Navigation */}
+        <nav className="mt-24 flex flex-col gap-6 text-center text-white text-lg">
+          <a href="#ecosystem" onClick={onClose}>Ecosystem</a>
+          <a href="#investment" onClick={onClose}>Investment</a>
+          <a href="#roadmap" onClick={onClose}>Roadmap</a>
+          <a href="#security" onClick={onClose}>Security</a>
+          <a href="#community" onClick={onClose}>Community</a>
+        </nav>
       </aside>
     </>
   );

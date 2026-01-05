@@ -6,12 +6,11 @@ export default function WebGLBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-}
-    if (!canvas) return;
+  const canvas = canvasRef.current;
+  if (!canvas) return;
 
-    const gl = canvas.getContext('webgl');
-    if (!gl) return;
+  const gl = canvas.getContext('webgl');
+  if (!gl) return;
 
     const vertex = `
       attribute vec2 position;

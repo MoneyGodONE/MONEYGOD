@@ -23,9 +23,9 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
   const satellites: Satellite[] = [
     { id: '1', angle: 0, speed: 0.01, radius: 150, color: '#FFD700' },
-    { id: '2', angle: 90, speed: 0.012, radius: 150, color: '#00D4AA' },
-    { id: '3', angle: 180, speed: 0.009, radius: 150, color: '#FF6B35' },
-    { id: '4', angle: 270, speed: 0.011, radius: 150, color: '#FFD700' },
+    { id: '2', angle: Math.PI / 2, speed: 0.012, radius: 150, color: '#00D4AA' },
+    { id: '3', angle: Math.PI, speed: 0.009, radius: 150, color: '#FF6B35' },
+    { id: '4', angle: (3 * Math.PI) / 2, speed: 0.011, radius: 150, color: '#FFD700' },
   ];
 
   useEffect(() => setIsHydrated(true), []);
@@ -52,7 +52,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
 
-      // rings
+      // ring
       ctx.strokeStyle = 'rgba(255,215,0,0.15)';
       ctx.lineWidth = 1;
       ctx.beginPath();
@@ -111,24 +111,75 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         <h1 className="font-orbitron font-bold text-5xl md:text-7xl mb-6">
           Discover the Future of Crypto Ecosystems
         </h1>
+
         <p className="text-xl text-text-secondary mb-12">
           First orbital visualization revealing interconnected blockchain projects
         </p>
 
-        <div className="flex gap-4 justify-center">
+        {/* === BUTTONS (идеал, без деградации) === */}
+        <div className="flex items-center justify-center gap-6 mt-10 flex-wrap">
           <button
             onClick={onExploreClick}
-            className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-bold"
+            className="
+              flex items-center
+              min-w-[240px]
+              px-8 py-4
+              bg-accent
+              text-accent-foreground
+              font-space-mono
+              rounded-xl
+              hover:brightness-110
+              transition
+            "
           >
-            Explore Ecosystem
-            <Icon name="ArrowRightIcon" size={20} />
+            <span>Explore Ecosystem</span>
+            <span className="ml-auto text-lg">→</span>
           </button>
+
           <button
             onClick={onInvestmentClick}
-            className="border border-border px-8 py-4 rounded-lg"
+            className="
+              px-8 py-4
+              rounded-xl
+              font-space-mono
+              text-text-primary
+              bg-white/5
+              backdrop-blur-md
+              border border-white/10
+              hover:bg-white/10
+              transition
+            "
           >
             Investment Opportunities
           </button>
+        </div>
+
+        {/* === STATS (возвращены, 1:1 со скрином) === */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {[
+            { value: '47', label: 'Total Projects' },
+            { value: '$2.3B', label: 'Combined Market Cap' },
+            { value: '156K', label: 'Active Users' },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="
+                rounded-2xl
+                border border-white/10
+                bg-white/5
+                backdrop-blur-md
+                px-6 py-5
+                text-center
+              "
+            >
+              <div className="text-accent text-3xl font-orbitron mb-1">
+                {item.value}
+              </div>
+              <div className="text-text-secondary text-sm font-space-mono">
+                {item.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

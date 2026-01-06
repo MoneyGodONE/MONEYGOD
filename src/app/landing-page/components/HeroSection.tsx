@@ -117,42 +117,53 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         </p>
 
         {/* === BUTTONS (идеал, без деградации) === */}
-        <div className="flex items-center justify-center gap-6 mt-10 flex-wrap">
-          <button
-            onClick={onExploreClick}
-            className="
-              flex items-center
-              min-w-[240px]
-              px-8 py-4
-              bg-accent
-              text-accent-foreground
-              font-space-mono
-              rounded-xl
-              hover:brightness-110
-              transition
-            "
-          >
-            <span>Explore Ecosystem</span>
-            <span className="ml-auto text-lg">→</span>
-          </button>
+        <div className="flex items-center gap-6 mt-10">
+  {/* PRIMARY */}
+  <button
+    onClick={onExploreClick}
+    className="
+      flex items-center
+      min-w-[260px]
+      px-8 py-4
+      bg-accent
+      text-accent-foreground
+      font-space-mono
+      font-bold
+      rounded-xl
+      hover:brightness-110
+      hover:scale-[1.02]
+      transition-all
+      duration-200
+    "
+  >
+    <span>Explore Ecosystem</span>
+    <span className="ml-auto text-2xl leading-none">→</span>
+  </button>
 
-          <button
-            onClick={onInvestmentClick}
-            className="
-              px-8 py-4
-              rounded-xl
-              font-space-mono
-              text-text-primary
-              bg-white/5
-              backdrop-blur-md
-              border border-white/10
-              hover:bg-white/10
-              transition
-            "
-          >
-            Investment Opportunities
-          </button>
-        </div>
+  {/* SECONDARY */}
+  <button
+    onClick={onInvestmentClick}
+    className="
+      min-w-[260px]
+      px-8 py-4
+      rounded-xl
+      font-space-mono
+      font-bold
+      text-text-primary
+      bg-white/5
+      backdrop-blur-md
+      border border-white/10
+      hover:bg-accent
+      hover:text-accent-foreground
+      hover:border-accent/50
+      hover:scale-[1.02]
+      transition-all
+      duration-200
+    "
+  >
+    Investment Opportunities
+  </button>
+</div>
 
         {/* === STATS (возвращены, 1:1 со скрином) === */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">

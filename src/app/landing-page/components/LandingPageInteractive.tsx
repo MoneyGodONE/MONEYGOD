@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import TopLeftOrgSwitch from './TopLeftOrgSwitch';
 import LandingBackground from './LandingBackground';
+import PreFooterBackground from './PreFooterBackground';
 import Header from './Header';
 import HeroSection from './HeroSection';
 import WebGLBackground from './WebGLBackground';

@@ -96,3 +96,29 @@
 .animate-planetFloat {
   animation: planetFloat 4s ease-in-out infinite;
 }
+
+@keyframes orbitSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbitSlow {
+  animation: orbitSlow 60s linear infinite;
+}
+
+@keyframes band-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40%);
+  }
+}
+
+.animate-band {
+  animation: band-move 18s linear infinite;
+}

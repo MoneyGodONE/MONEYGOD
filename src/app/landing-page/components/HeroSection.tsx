@@ -10,14 +10,22 @@ interface HeroProps {
 export default function HeroSection({ onExploreClick, onInvestmentClick }: HeroProps) {
   return (
     <section className="relative flex flex-col items-center justify-center py-24 md:py-48">
-      {/* Rotating O и Discover */}
+      {/* Заголовок + вращение планет через Canvas */}
       <div className="relative flex flex-col items-center">
-        <h1 className="font-orbitron text-6xl md:text-[96px] text-text-primary leading-[1] md:leading-[1]">
-          Rotating O
-        </h1>
-        <h2 className="mt-4 text-3xl md:text-5xl font-bold text-center text-text-primary md:mt-8">
+        {/* Canvas с планетами */}
+        <div className="w-[240px] h-[240px] md:w-[360px] md:h-[360px] relative mb-6">
+          {/* WebGLBackground рендерит canvas с планетами и MGO */}
+        </div>
+
+        {/* Основной заголовок */}
+        <h1 className="font-orbitron text-4xl md:text-[64px] text-text-primary leading-tight text-center">
           Discover the Future of Crypto Ecosystems
-        </h2>
+        </h1>
+
+        {/* Подзаголовок */}
+        <p className="mt-4 text-lg md:text-2xl text-text-secondary text-center max-w-2xl">
+          First Orbital Visualisation revealing interconnected blockchain projects
+        </p>
       </div>
 
       {/* Кнопки */}
@@ -37,13 +45,8 @@ export default function HeroSection({ onExploreClick, onInvestmentClick }: HeroP
       </div>
 
       {/* Мобильное меню под логотипом */}
-      <div className="mt-6 flex md:hidden w-full justify-start px-4">
-        <button className="px-4 py-2 font-bold bg-accent text-background rounded-lg mr-2">
-          Menu 1
-        </button>
-        <button className="px-4 py-2 font-bold bg-accent text-background rounded-lg">
-          Menu 2
-        </button>
+      <div className="mt-6 flex md:hidden gap-4 justify-start w-full max-w-xs">
+        {/* Ecosystem, Investment, Roadmap, Security, Community */}
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Icon from '@/components/ui/AppIcon';
 
@@ -5,7 +7,11 @@ const FooterSection = () => {
   const currentYear = new Date()?.getFullYear();
 
   return (
-    <footer className="bg-primary border-t border-border py-16 px-4">
+    <footer className="relative bg-primary border-t border-border py-16 px-4">
+      {/* 🔹 Solana-полосы снизу */}
+      <div className="absolute inset-x-0 bottom-0 h-[4px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-[4px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
+
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>

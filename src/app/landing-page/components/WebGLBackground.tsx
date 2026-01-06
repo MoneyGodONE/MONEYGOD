@@ -2,26 +2,13 @@
 
 import React, { useEffect, useRef } from 'react';
 
-interface Planet {
-  radius: number;
-  distance: number;
-  speed: number;
-  color: string;
-  angle: number;
-}
-
 export default function WebGLBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const planets: Planet[] = [
-    { radius: 10, distance: 80, speed: 0.02, color: 'yellow', angle: 0 },
-    { radius: 8, distance: 140, speed: 0.015, color: 'blue', angle: 0 },
-    { radius: 6, distance: 200, speed: 0.01, color: 'red', angle: 0 },
-  ];
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -30,43 +17,50 @@ export default function WebGLBackground() {
 
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
+    const planets = [
+      { radius: 6, distance: 50, angle: 0, speed: 0.02, color: '#facc15' },
+      { radius: 4, distance: 80, angle: 1.5, speed: 0.015, color: '#34d399' },
+      { radius: 5, distance: 110, angle: 3, speed: 0.01, color: '#60a5fa' },
+    ];
 
-    function draw() {
+    let animationFrameId: number;
+
+    const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Рисуем кружочек MGO в центре
+      // Орбиты
+      planets.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, p.distance, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.stroke();
+      });
+
+      // Планеты
+      planets.forEach(p => {
+        p.angle += p.speed;
+        const x = centerX + p.distance * Math.cos(p.angle);
+        const y = centerY + p.distance * Math.sin(p.angle);
+        ctx.beginPath();
+        ctx.arc(x, y, p.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+
+      // Центр MGO
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
-      ctx.fillStyle = 'yellow';
+      ctx.arc(centerX, centerY, 20, 0, 2 * Math.PI);
+      ctx.fillStyle = '#facc15';
       ctx.fill();
-      ctx.font = 'bold 24px Orbitron';
-      ctx.fillStyle = 'black';
+
+      ctx.font = 'bold 14px Arial';
+      ctx.fillStyle = '#000';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('MGO', centerX, centerY);
 
-      // Рисуем планеты с орбитами
-      planets.forEach((planet) => {
-        planet.angle += planet.speed;
-
-        const x = centerX + planet.distance * Math.cos(planet.angle);
-        const y = centerY + planet.distance * Math.sin(planet.angle);
-
-        // Орбита
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, planet.distance, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-        ctx.stroke();
-
-        // Планета
-        ctx.beginPath();
-        ctx.arc(x, y, planet.radius, 0, Math.PI * 2);
-        ctx.fillStyle = planet.color;
-        ctx.fill();
-      });
-
-      requestAnimationFrame(draw);
-    }
+      animationFrameId = requestAnimationFrame(draw);
+    };
 
     draw();
 
@@ -74,8 +68,13 @@ export default function WebGLBackground() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -84,7 +83,8 @@ export default function WebGLBackground() {
         ref={canvasRef}
         className="fixed inset-0 -z-10 pointer-events-none"
       />
-      {/* Solana полосы */}
+
+      {/* Solana-полосы сверху и снизу */}
       <div className="fixed inset-x-0 top-0 z-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
       <div className="fixed inset-x-0 bottom-0 z-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
     </>

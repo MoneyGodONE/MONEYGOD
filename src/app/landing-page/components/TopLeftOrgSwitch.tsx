@@ -33,23 +33,25 @@ export default function TopLeftOrgSwitch() {
         </Link>
 
         <Link
-          href="https://MoneyGod.ONE"
-          target="_blank"
-          className="
-  px-4 py-2
-  rounded-full
-  font-space-mono
-  font-bold
-  text-text-primary
-  bg-white/5
-  hover:bg-accent
-  hover:text-accent-foreground
-  transition-all
-  duration-200
-"
-        >
-          Corporation
-        </Link>
+  href="https://MoneyGod.ONE"
+  target="_blank"
+  className="
+    px-4 py-2
+    rounded-full
+    font-space-mono
+    font-bold
+    text-text-primary
+    bg-white/5
+    border border-orange-400/30
+    hover:bg-orange-500/20
+    hover:text-orange-300
+    hover:shadow-[0_0_20px_rgba(255,140,0,0.45)]
+    transition-all
+    duration-200
+  "
+>
+  Corporation
+</Link>
       </div>
     </div>
   );

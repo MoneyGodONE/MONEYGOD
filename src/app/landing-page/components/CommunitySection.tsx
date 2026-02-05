@@ -27,27 +27,27 @@ const CommunitySection = () => {
   ];
 
   const recentActivity = [
-    {
-      user: 'CryptoWhale',
-      action: 'invested $50K in MGO DeFi Protocol',
-      time: '2 hours ago',
-    },
-    {
-      user: 'BlockchainDev',
-      action: 'launched new NFT collection',
-      time: '5 hours ago',
-    },
-    {
-      user: 'InvestorPro',
-      action: 'achieved 200% ROI milestone',
-      time: '8 hours ago',
-    },
-    {
-      user: 'EcosystemBuilder',
-      action: 'completed security audit',
-      time: '12 hours ago',
-    },
-  ];
+  {
+    user: 'Research Node',
+    action: 'published interoperability findings',
+    time: '2 hours ago',
+  },
+  {
+    user: 'Core Contributor',
+    action: 'deployed infrastructure update',
+    time: '5 hours ago',
+  },
+  {
+    user: 'Community Working Group',
+    action: 'initiated governance proposal',
+    time: '8 hours ago',
+  },
+  {
+    user: 'Security Team',
+    action: 'completed network audit',
+    time: '12 hours ago',
+  },
+];
 
   return (
     <section id="community-section" className="py-24 px-4 bg-background">
@@ -109,37 +109,37 @@ const CommunitySection = () => {
 
           <div className="bg-card rounded-lg p-8 border border-border">
             <h3 className="font-orbitron font-bold text-2xl text-text-primary mb-6">
-              Community Benefits
+              Participation Pathways
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Icon name="CheckCircleIcon" size={20} className="text-success flex-shrink-0 mt-0.5" />
                 <span className="font-source-sans text-text-secondary">
-                  Direct access to project founders and development teams
+                  Collaborate with core contributors
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Icon name="CheckCircleIcon" size={20} className="text-success flex-shrink-0 mt-0.5" />
                 <span className="font-source-sans text-text-secondary">
-                  Exclusive AMAs and educational webinars
+                  Research forums & working groups
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Icon name="CheckCircleIcon" size={20} className="text-success flex-shrink-0 mt-0.5" />
                 <span className="font-source-sans text-text-secondary">
-                  Early access to new project launches and features
+                  Participation in initiative pilots
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Icon name="CheckCircleIcon" size={20} className="text-success flex-shrink-0 mt-0.5" />
                 <span className="font-source-sans text-text-secondary">
-                  Community governance voting rights
+                  Governance contribution & review
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Icon name="CheckCircleIcon" size={20} className="text-success flex-shrink-0 mt-0.5" />
                 <span className="font-source-sans text-text-secondary">
-                  Networking opportunities with industry leaders
+                  Cross-domain collaboration
                 </span>
               </li>
             </ul>

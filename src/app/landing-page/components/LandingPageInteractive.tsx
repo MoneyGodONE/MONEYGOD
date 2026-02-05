@@ -137,34 +137,9 @@ const LandingPageInteractive = () => {
         onExploreClick={handleExploreClick}
         onInvestmentClick={handleInvestmentClick} />
 
-      <ProblemSection />
       <EcosystemShowcase onProjectClick={handleProjectClick} />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <SecuritySection />
-      <RoadmapSection />
-      <ComparisonSection />
-      <InvestmentTiersSection />
-      
-      <div className="py-24 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-orbitron font-bold text-4xl md:text-5xl text-text-primary mb-6">
-              Calculate Your Potential Returns
-            </h2>
-            <p className="font-source-sans text-xl text-text-secondary max-w-3xl mx-auto">
-              Use our interactive calculator to estimate your investment growth
-            </p>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            <InvestmentCalculator />
-          </div>
-        </div>
-      </div>
-
-      <FAQSection />
+            
       <CommunitySection />
-      <CTASection />
       <FooterSection />
 
       <AnchorNavigation />

@@ -111,10 +111,10 @@ const EcosystemShowcase = ({ onProjectClick }: EcosystemShowcaseProps) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-orbitron font-bold text-4xl md:text-5xl text-text-primary mb-6">
-            Interactive Ecosystem Explorer
+            Foundation Network Architecture
           </h2>
           <p className="font-source-sans text-xl text-text-secondary max-w-3xl mx-auto">
-            Hover over projects to see connections. Click for detailed information and investment opportunities.
+            Explore the core layers, research domains, and operational programs that form the foundation of the network.
           </p>
         </div>
 

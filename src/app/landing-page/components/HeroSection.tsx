@@ -23,15 +23,15 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   const animationFrameRef = useRef<number>();
 
   const satellites: Satellite[] = [
-    { id: 'sat1', name: 'DeFi Protocol', angle: 0, speed: 0.01, radius: 150, color: '#FFD700' },
-    { id: 'sat2', name: 'NFT Marketplace', angle: 45, speed: 0.012, radius: 150, color: '#00D4AA' },
-    { id: 'sat3', name: 'Gaming Platform', angle: 90, speed: 0.009, radius: 150, color: '#FF6B35' },
-    { id: 'sat4', name: 'Lending Protocol', angle: 135, speed: 0.011, radius: 150, color: '#FFD700' },
-    { id: 'sat5', name: 'DEX Aggregator', angle: 180, speed: 0.01, radius: 150, color: '#00D4AA' },
-    { id: 'sat6', name: 'Staking Platform', angle: 225, speed: 0.013, radius: 150, color: '#FF6B35' },
-    { id: 'sat7', name: 'Bridge Protocol', angle: 270, speed: 0.008, radius: 150, color: '#FFD700' },
-    { id: 'sat8', name: 'Launchpad', angle: 315, speed: 0.014, radius: 150, color: '#00D4AA' },
-  ];
+  { id: 'sat1', name: 'Infrastructure Layer', angle: 0, speed: 0.01, radius: 150, color: '#FFD700' },
+  { id: 'sat2', name: 'Protocol Research', angle: 45, speed: 0.012, radius: 150, color: '#00D4AA' },
+  { id: 'sat3', name: 'Innovation Labs', angle: 90, speed: 0.009, radius: 150, color: '#FF6B35' },
+  { id: 'sat4', name: 'Network Coordination', angle: 135, speed: 0.011, radius: 150, color: '#FFD700' },
+  { id: 'sat5', name: 'Ecosystem Growth', angle: 180, speed: 0.01, radius: 150, color: '#00D4AA' },
+  { id: 'sat6', name: 'Community Programs', angle: 225, speed: 0.013, radius: 150, color: '#FF6B35' },
+  { id: 'sat7', name: 'Interoperability', angle: 270, speed: 0.008, radius: 150, color: '#FFD700' },
+  { id: 'sat8', name: 'Strategic Initiatives', angle: 315, speed: 0.014, radius: 150, color: '#00D4AA' },
+];
 
   useEffect(() => {
     setIsHydrated(true);
@@ -159,10 +159,10 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6 animate-fade-in">
-          Discover the Future of Crypto Ecosystems
+          A Coordination Layer for Next-Generation Digital Networks
         </h1>
         <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12 max-w-3xl mx-auto">
-          First orbital visualization revealing interconnected blockchain projects with unprecedented transparency
+          An evolving foundation supporting infrastructure, research, and community-driven innovation across the decentralized landscape.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -177,22 +177,22 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
             onClick={onInvestmentClick}
             className="bg-secondary hover:bg-secondary/80 text-secondary-foreground font-rajdhani font-bold text-lg py-4 px-8 rounded-lg border border-border transition-all duration-250"
           >
-            Investment Opportunities
+            View Foundation Initiatives
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
           <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
             <p className="font-orbitron font-bold text-4xl text-accent mb-2">47</p>
-            <p className="font-space-mono text-sm text-text-secondary">Total Projects</p>
+            <p className="font-space-mono text-sm text-text-secondary">Active Initiatives</p>
           </div>
           <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
             <p className="font-orbitron font-bold text-4xl text-accent mb-2">$2.3B</p>
-            <p className="font-space-mono text-sm text-text-secondary">Combined Market Cap</p>
+            <p className="font-space-mono text-sm text-text-secondary">Research & Infrastructure Scope</p>
           </div>
           <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
             <p className="font-orbitron font-bold text-4xl text-accent mb-2">156K</p>
-            <p className="font-space-mono text-sm text-text-secondary">Active Users</p>
+            <p className="font-space-mono text-sm text-text-secondary">Global Participants</p>
           </div>
         </div>
       </div>

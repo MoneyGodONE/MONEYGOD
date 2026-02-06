@@ -16,7 +16,7 @@ export default function Header() {
           <div className="w-1/3" />
 
           {/* ЦЕНТР: Elysium + Rotating O */}
-        <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
   <span className="text-2xl md:text-3xl font-orbitron font-bold text-white">
     Elysium
   </span>
@@ -29,21 +29,34 @@ export default function Header() {
 </div>
 
           {/* ПРАВО: меню с подложкой */}
-          <div className="w-1/3 flex justify-end">
-            <div
-              className="
-                hidden md:flex
-                items-center gap-6
-                px-4 py-2
-                rounded-xl
-                backdrop-blur-md
-                bg-black/50
-                border border-white/15
-                text-white
-              "
-            >
-              {/* здесь твои пункты меню */}
-            </div>
+<div
+  className="
+    hidden md:flex
+    items-center gap-5
+    px-5 py-3
+    rounded-xl
+    backdrop-blur-md
+    bg-black/60
+    border border-white/20
+    text-white
+  "
+>
+  <button className="hover:text-yellow-400 transition">
+    Ecosystem
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Investment
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Roadmap
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Security
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Community
+  </button>
+</div>
 
             {/* Mobile */}
             <button

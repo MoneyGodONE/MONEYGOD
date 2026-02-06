@@ -9,22 +9,49 @@ export default function Header() {
 
   return (
     <>
-      {/* HEADER */}
-      <header className="relative z-30 flex items-center justify-between px-6 py-4">
-        {/* Logo + RotatingO */}
-        <div className="flex items-center gap-2">
-          <span className="text-xl md:text-2xl font-orbitron font-bold">
+      <header
+        className="
+          absolute
+          top-6
+          left-1/2
+          -translate-x-1/2
+          z-30
+          flex
+          items-center
+          justify-center
+          px-6
+          py-4
+        "
+      >
+        {/* подложка для читаемости */}
+        <div
+          className="
+            absolute
+            inset-0
+            -z-10
+            rounded-2xl
+            backdrop-blur-md
+            bg-black/45
+            border
+            border-white/10
+          "
+        />
+
+        {/* бренд по центру */}
+        <div className="flex items-center gap-3">
+          <span className="text-4xl md:text-6xl font-orbitron font-bold text-white">
             Elysium
           </span>
 
-          {/* Rotating O — и на мобилке тоже */}
-          <RotatingO />
+          <div className="scale-150 md:scale-175">
+            <RotatingO />
+          </div>
         </div>
 
-        {/* Mobile menu button */}
+        {/* mobile menu */}
         <button
           onClick={() => setMenuOpen(true)}
-          className="md:hidden relative z-50 p-2"
+          className="md:hidden absolute right-4 p-2"
           aria-label="Open menu"
         >
           <span className="block w-6 h-[2px] bg-white mb-1" />
@@ -33,11 +60,7 @@ export default function Header() {
         </button>
       </header>
 
-      {/* ⬇️ ВОТ ЗДЕСЬ. ПОСЛЕ HEADER, ПЕРЕД </> */}
-      <MobileMenu
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-      />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

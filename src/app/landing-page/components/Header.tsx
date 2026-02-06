@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import RotatingO from './RotatingO';
 import MobileMenu from './MobileMenu';
 
 export default function Header() {
@@ -9,17 +8,29 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 z-30 w-full">
+      <header className="relative z-30 w-full">
         <div className="flex items-center justify-between px-6 py-4">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-orbitron font-bold">
-              Elysium
-            </span>
-            <RotatingO />
+          {/* Logo слева — КАК БЫЛО */}
+          <span className="text-xl md:text-2xl font-orbitron font-bold text-white">
+            Elysium
+          </span>
+
+          {/* Правое меню с подложкой */}
+          <div
+            className="
+              hidden md:flex
+              items-center gap-6
+              px-4 py-2
+              rounded-xl
+              backdrop-blur-md
+              bg-black/45
+              border border-white/10
+            "
+          >
+            {/* твои пункты меню */}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile */}
           <button
             onClick={() => setMenuOpen(true)}
             className="md:hidden p-2"
@@ -32,10 +43,7 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-      />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

@@ -59,7 +59,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const centerX = canvas.width / 2 / window.devicePixelRatio;
-      const centerY = canvas.height / 2 / window.devicePixelRatio;
+      const centerY = canvas.height / 2 / window.devicePixelRatio - 80;
 
       ctx.strokeStyle = 'rgba(0,0,0,0.08)';
       ctx.lineWidth = 1;

@@ -62,6 +62,13 @@ export default function LandingPageInteractive() {
       ?.scrollIntoView({ behavior: 'smooth' });
   };
 
+const handleCloseModal = () => {
+  setIsModalOpen(false);
+  setTimeout(() => {
+    setSelectedProject(null);
+  }, 300);
+};
+
   const handleProjectClick = (project: any) => {
     setSelectedProject({
       ...project,

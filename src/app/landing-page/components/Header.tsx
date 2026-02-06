@@ -16,14 +16,15 @@ export default function Header() {
           <div className="w-1/3" />
 
           {/* ЦЕНТР: Elysium + Rotating O */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
-            <span className="text-2xl md:text-3xl font-orbitron font-bold text-white">
-              Elysium
-            </span>
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
+  <span className="text-2xl md:text-3xl font-orbitron font-bold text-white">
+    Elysium
+  </span>
 
-            <div className="ml-[120px]">
-  <div className="scale-[1.6] md:scale-[2]">
-    <RotatingO />
+  <div className="ml-[120px]">
+    <div className="scale-[1.6] md:scale-[2]">
+      <RotatingO />
+    </div>
   </div>
 </div>
 

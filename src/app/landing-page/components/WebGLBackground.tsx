@@ -45,7 +45,7 @@ export default function WebGLBackground() {
           vec3(0.6, 0.4, 1.0) * b2 +
           vec3(0.2, 0.8, 0.4) * b3;
 
-        gl_FragColor = vec4(color, 0.45);
+        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
       }
     `;
 

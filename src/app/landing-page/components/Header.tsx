@@ -21,7 +21,7 @@ export default function Header() {
               Elysium
             </span>
 
-            <div className="scale-[1.6] md:scale-[2] translate-x-[13px]">
+            <div className="scale-[1.6] md:scale-[2] translate-x-[26px]">
               <RotatingO />
             </div>
           </div>

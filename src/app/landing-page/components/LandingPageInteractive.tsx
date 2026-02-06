@@ -43,7 +43,7 @@ interface ProjectData {
   connections: string[];
 }
 
-const LandingPageInteractive = () => {
+export default function LandingPageInteractive() {
   const [isHydrated, setIsHydrated] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,109 +53,83 @@ const LandingPageInteractive = () => {
   }, []);
 
   const handleExploreClick = () => {
-    const ecosystemSection = document.getElementById('ecosystem-section');
-    if (ecosystemSection) {
-      ecosystemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.getElementById('ecosystem-section')
+      ?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleInvestmentClick = () => {
-    const investmentSection = document.getElementById('investment-section');
-    if (investmentSection) {
-      investmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.getElementById('investment-section')
+      ?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleProjectClick = (project: any) => {
-    const fullProjectData: ProjectData = {
-      id: project.id,
-      name: project.name,
-      symbol: project.symbol,
-      logo: project.logo,
-      description: project.description,
-      category: project.category,
-      metrics: {
-        tvl: project.tvl,
-        marketCap: project.marketCap,
-        holders: project.holders,
-        volume24h: project.volume24h
-      },
+    setSelectedProject({
+      ...project,
       tokenomics: {
         totalSupply: '1,000,000,000',
         circulatingSupply: '450,000,000',
         tokenPrice: '$2.45',
-        fdv: '$2.45B'
+        fdv: '$2.45B',
       },
       team: [
-      {
-        name: 'Alex Johnson',
-        role: 'Founder & CEO',
-        avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_18276e8bd-1765872905794.png",
-        credentials: 'Former VP at Coinbase, 10+ years blockchain experience'
-      },
-      {
-        name: 'Sarah Chen',
-        role: 'CTO',
-        avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_12f2fa675-1763295678226.png",
-        credentials: 'Ex-Google engineer, Smart contract security expert'
-      }],
-
-      website: 'https://example.com',
-      whitepaper: 'https://example.com/whitepaper',
-      auditReport: 'https://example.com/audit',
-      connections: project.connections
-    };
-
-    setSelectedProject(fullProjectData);
+        {
+          name: 'Alex Johnson',
+          role: 'Founder & CEO',
+          avatar: 'https://img.rocket.new/generatedImages/rocket_gen_img_18276e8bd-1765872905794.png',
+          credentials: 'Former VP at Coinbase, 10+ years blockchain experience',
+        },
+        {
+          name: 'Sarah Chen',
+          role: 'CTO',
+          avatar: 'https://img.rocket.new/generatedImages/rocket_gen_img_12f2fa675-1763295678226.png',
+          credentials: 'Ex-Google engineer, Smart contract security expert',
+        },
+      ],
+    });
     setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedProject(null), 300);
   };
 
   if (!isHydrated) {
     return (
-      <div className="min-h-screen bg-background/60 backdrop-blur-xl flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-accent animate-pulse" />
           <p className="font-orbitron font-bold text-2xl text-text-primary">
             Loading MGO Orbital...
           </p>
         </div>
-      </div>);
-
+      </div>
+    );
   }
 
   return (
-  <>
-    <WebGLBackground />
+    <>
+      {/* 🔥 WEBGL ФОН */}
+      <WebGLBackground />
 
-    {/* 🔥 ВОТ ЭТО КЛЮЧ */}
-    <div className="relative z-10 bg-transparent">
-      <TopLeftOrgSwitch />
-      <Header />
+      {/* 🔥 ВЕСЬ КОНТЕНТ СТРОГО ПОВЕРХ */}
+      <div className="relative z-10">
+        <TopLeftOrgSwitch />
+        <Header />
 
-      <HeroSection
-        onExploreClick={handleExploreClick}
-        onInvestmentClick={handleInvestmentClick}
+        <HeroSection
+          onExploreClick={handleExploreClick}
+          onInvestmentClick={handleInvestmentClick}
+        />
+
+        <EcosystemShowcase onProjectClick={handleProjectClick} />
+        <CommunitySection />
+        <FooterSection />
+
+        <AnchorNavigation />
+        <ProgressIndicator />
+      </div>
+
+      <OrbitalProjectModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        project={selectedProject}
       />
-
-      <EcosystemShowcase onProjectClick={handleProjectClick} />
-      <CommunitySection />
-      <FooterSection />
-
-      <AnchorNavigation />
-      <ProgressIndicator />
-    </div>
-
-    <OrbitalProjectModal
-      isOpen={isModalOpen}
-      onClose={handleCloseModal}
-      project={selectedProject}
-    />
-  </>
-);
-
-export default LandingPageInteractive;
+    </>
+  );
+}

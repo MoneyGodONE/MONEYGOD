@@ -12,8 +12,6 @@ export default function WebGLBackground() {
     const gl = canvas.getContext('webgl', { alpha: true });
     if (!gl) return;
 
-    console.log('WebGLBackground mounted');
-
     const vertex = `
       attribute vec2 position;
       varying vec2 vUv;
@@ -79,24 +77,21 @@ export default function WebGLBackground() {
     const uTime = gl.getUniformLocation(program, 'uTime');
     const uScroll = gl.getUniformLocation(program, 'uScroll');
 
-    // 🔥 ВАЖНО
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
-
-    let start = performance.now();
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
 
     resize();
     window.addEventListener('resize', resize);
+
+    const start = performance.now();
 
     const render = () => {
       gl.clear(gl.COLOR_BUFFER_BIT);

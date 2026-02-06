@@ -43,7 +43,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
 
       canvas.width = rect.width * dpr;
@@ -58,8 +58,8 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const centerX = canvas.width / 2 / window.devicePixelRatio;
-      const centerY = canvas.height / 2 / window.devicePixelRatio;
+      const centerX = canvas.width / 2 / (window.devicePixelRatio || 1);
+      const centerY = canvas.height / 2 / (window.devicePixelRatio || 1);
 
       // Orbit ring
       ctx.strokeStyle = 'rgba(255,255,255,0.08)';
@@ -86,6 +86,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
       satellites.forEach((sat) => {
         sat.angle += sat.speed;
+
         const x = centerX + Math.cos(sat.angle) * sat.radius;
         const y = centerY + Math.sin(sat.angle) * sat.radius;
 
@@ -108,29 +109,29 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-    };
-  }, [isHydrated]);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, [isHydrated]);
 
   return (
-  <section className="relative min-h-[70vh] flex items-start justify-center bg-background overflow-hidden -mt-32 pt-0">
-    {/* WebGL и полосы — ниже по DOM, ничего не перекрываем */}
+    <section className="relative min-h-[70vh] flex items-start justify-center bg-background overflow-hidden -mt-32 pt-0">
+      {/* canvas под контентом */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0 pointer-events-none"
+      />
 
-    {/* КОНТЕНТ */}
-    <div className="relative z-20 text-center px-4 pt-40">
-      <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
-        A Coordination Layer for Digital Networks
-      </h1>
+      {/* КОНТЕНТ */}
+      <div className="relative z-20 text-center px-4 pt-40">
+        <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
+          A Coordination Layer for Digital Networks
+        </h1>
 
-      <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
-        Infrastructure, research and ecosystem growth — aligned.
-      </p>
+        <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
+          Infrastructure, research and ecosystem growth — aligned.
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -142,23 +143,23 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
           </button>
 
           <button
-  onClick={onInvestmentClick}
-  className="
-    bg-black/80
-    hover:bg-black
-    text-white
-    font-rajdhani
-    font-bold
-    text-lg
-    py-4 px-8
-    rounded-lg
-    backdrop-blur-sm
-    border border-white/20
-    transition-all
-  "
->
-  View Initiatives
-</button>
+            onClick={onInvestmentClick}
+            className="
+              bg-black/80
+              hover:bg-black
+              text-white
+              font-rajdhani
+              font-bold
+              text-lg
+              py-4 px-8
+              rounded-lg
+              backdrop-blur-sm
+              border border-white/20
+              transition-all
+            "
+          >
+            View Initiatives
+          </button>
         </div>
       </div>
     </section>

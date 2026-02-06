@@ -9,8 +9,10 @@ export default function WebGLBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const gl = canvas.getContext('webgl');
+    const gl = canvas.getContext('webgl', { alpha: true });
     if (!gl) return;
+
+    console.log('WebGLBackground mounted');
 
     const vertex = `
       attribute vec2 position;
@@ -33,18 +35,19 @@ export default function WebGLBackground() {
       }
 
       void main() {
-  vec2 uv = vUv;
-  uv.y -= 0.08; // ↓ смещение вниз (~пол сантиметра визуально)
- float b1 = band(uv, 0.6, 0.26);
-  float b2 = band(uv + 0.25, 0.35, 0.40);
-  float b3 = band(uv + 0.45, 0.2, 0.46);
+        vec2 uv = vUv;
+        uv.y -= 0.08;
 
-  vec3 color =
-    vec3(0.2, 1.0, 0.8) * b1 +
-    vec3(0.6, 0.4, 1.0) * b2 +
-    vec3(0.2, 0.8, 0.4) * b3;
+        float b1 = band(uv, 0.6, 0.26);
+        float b2 = band(uv + 0.25, 0.35, 0.40);
+        float b3 = band(uv + 0.45, 0.2, 0.46);
 
-  gl_FragColor = vec4(color, 0.35);
+        vec3 color =
+          vec3(0.2, 1.0, 0.8) * b1 +
+          vec3(0.6, 0.4, 1.0) * b2 +
+          vec3(0.2, 0.8, 0.4) * b3;
+
+        gl_FragColor = vec4(color, 0.45);
       }
     `;
 
@@ -76,11 +79,19 @@ export default function WebGLBackground() {
     const uTime = gl.getUniformLocation(program, 'uTime');
     const uScroll = gl.getUniformLocation(program, 'uScroll');
 
+    // 🔥 ВАЖНО
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
+
     let start = performance.now();
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
 
@@ -88,6 +99,7 @@ export default function WebGLBackground() {
     window.addEventListener('resize', resize);
 
     const render = () => {
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform1f(uTime, (performance.now() - start) * 0.001);
       gl.uniform1f(uScroll, window.scrollY * 0.0002);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -102,7 +114,7 @@ export default function WebGLBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none"
     />
   );
 }

@@ -117,7 +117,7 @@ const LandingPageInteractive = () => {
 
   if (!isHydrated) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-background/60 backdrop-blur-xl flex items-center justify-center">
         <div className="text-center">
           <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-accent animate-pulse" />
           <p className="font-orbitron font-bold text-2xl text-text-primary">
@@ -129,29 +129,33 @@ const LandingPageInteractive = () => {
   }
 
   return (
-    <>
+  <>
     <WebGLBackground />
-    <TopLeftOrgSwitch />
+
+    {/* 🔥 ВОТ ЭТО КЛЮЧ */}
+    <div className="relative z-10 bg-transparent">
+      <TopLeftOrgSwitch />
       <Header />
+
       <HeroSection
         onExploreClick={handleExploreClick}
-        onInvestmentClick={handleInvestmentClick} />
+        onInvestmentClick={handleInvestmentClick}
+      />
 
       <EcosystemShowcase onProjectClick={handleProjectClick} />
-            
       <CommunitySection />
       <FooterSection />
 
       <AnchorNavigation />
       <ProgressIndicator />
+    </div>
 
-      <OrbitalProjectModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        project={selectedProject} />
-
-    </>);
-
-};
+    <OrbitalProjectModal
+      isOpen={isModalOpen}
+      onClose={handleCloseModal}
+      project={selectedProject}
+    />
+  </>
+);
 
 export default LandingPageInteractive;

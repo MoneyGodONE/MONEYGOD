@@ -29,7 +29,7 @@ export default function Header() {
 </div>
 
           {/* ПРАВО: меню с подложкой */}
-<div className="hidden md:flex items-center gap-5 px-5 py-3 rounded-xl backdrop-blur-md bg-black/90 border border-white/20 text-white">
+<div className=" hidden md:flex items-center gap-5 px-5 py-3 rounded-xl backdrop-blur-md bg-black/60 border border-white/20 text-white " >
   <button className="hover:text-yellow-400 transition">
     Ecosystem
   </button>

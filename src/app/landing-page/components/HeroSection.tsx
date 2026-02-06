@@ -114,7 +114,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     <section
       className="
         relative
-        min-h-[85vh]
+        min-h-screen
         flex
         items-center
         justify-center
@@ -141,7 +141,16 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={onExploreClick}
-            className="bg-black text-white font-rajdhani font-bold py-4 px-8 rounded-lg flex items-center gap-2"
+            className="
+  bg-yellow-400
+  text-black
+  font-rajdhani font-bold
+  py-4 px-8 rounded-lg
+  flex items-center gap-2
+  shadow-lg shadow-yellow-400/30
+  hover:bg-yellow-300
+  transition-all
+"
           >
             Explore Ecosystem
             <Icon name="ArrowRightIcon" size={20} />

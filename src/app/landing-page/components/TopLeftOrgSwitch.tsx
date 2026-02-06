@@ -8,7 +8,7 @@ export default function TopLeftOrgSwitch() {
       {/* Logo */}
       <div className="flex items-center gap-1 font-orbitron text-lg font-bold select-none">
         <span className="text-white">Elysium</span>
-        <span className="text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.6)]">
+        <span className="text-[#0F1020] drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
           O
         </span>
       </div>

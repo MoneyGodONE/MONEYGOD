@@ -113,35 +113,66 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   }, [isHydrated]);
 
   return (
-    <section
+  <section
+    className="
+      relative
+      min-h-[85vh]
+      flex
+      items-center
+      justify-center
+      bg-background
+      overflow-hidden
+      -mt-32
+    "
+  >
+    {/* мягкий градиент, НЕ перекрывает WebGL */}
+    <div
       className="
-        relative
-        min-h-[85vh]
-        flex
-        items-center
-        justify-center
-        overflow-hidden
-        -mt-32
+        absolute inset-0
+        z-[1]
+        bg-gradient-to-b
+        from-transparent
+        via-transparent
+        to-background/80
+        pointer-events-none
       "
-    >
-      {/* мягкий градиент, НЕ перекрывает WebGL */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-background/80" />
+    />
 
-      {/* локальный 2D canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-[2] pointer-events-none"
-      />
+    {/* локальный 2D canvas (орбиты / планеты) */}
+    <canvas
+      ref={canvasRef}
+      className="
+        absolute inset-0
+        z-[2]
+        pointer-events-none
+      "
+    />
 
-      {/* контент */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-        <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
-          A Coordination Layer for Digital Networks
-        </h1>
+    {/* КОНТЕНТ */}
+    <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+      <h1
+        className="
+          font-orbitron
+          font-bold
+          text-5xl md:text-7xl
+          text-[#0F1020]
+          mb-6
+          drop-shadow-[0_2px_12px_rgba(255,255,255,0.35)]
+        "
+      >
+        A Coordination Layer for Digital Networks
+      </h1>
 
-        <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
-          Infrastructure, research and ecosystem growth — aligned.
-        </p>
+      <p
+        className="
+          font-source-sans
+          text-xl md:text-2xl
+          text-[#2A2C4A]
+          mb-12
+        "
+      >
+        Infrastructure, research and ecosystem growth — aligned.
+      </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -153,11 +184,23 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
           </button>
 
           <button
-            onClick={onInvestmentClick}
-            className="border border-border text-secondary-foreground font-rajdhani font-bold py-4 px-8 rounded-lg"
-          >
-            View Initiatives
-          </button>
+  onClick={onInvestmentClick}
+  className="
+    bg-black/80
+    hover:bg-black
+    text-white
+    font-rajdhani
+    font-bold
+    text-lg
+    py-4 px-8
+    rounded-lg
+    backdrop-blur-sm
+    border border-white/20
+    transition-all
+  "
+>
+  View Initiatives
+</button>
         </div>
       </div>
     </section>

@@ -5,7 +5,12 @@ const FooterSection = () => {
   const currentYear = new Date()?.getFullYear();
 
   return (
-    <footer className="bg-primary border-t border-border py-16 px-4">
+    <footer className="relative bg-primary border-t border-border py-16 px-4 overflow-hidden">
+  {/* декоративные полосы */}
+  <div className="pointer-events-none absolute inset-0 opacity-40">
+    <div className="absolute -left-1/4 top-1/4 w-[150%] h-24 bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent rotate-[-6deg]" />
+    <div className="absolute -left-1/4 top-2/3 w-[150%] h-24 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent rotate-[4deg]" />
+  </div>
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>

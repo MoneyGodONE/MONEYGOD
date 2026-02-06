@@ -116,29 +116,32 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   <section
     className="
       relative
-      min-h-[85vh]
+      min-h-[70vh]
       flex
-      items-center
+      items-start
       justify-center
-      bg-background
       overflow-hidden
       -mt-32
+      pt-0
     "
   >
-    {/* мягкий градиент, НЕ перекрывает WebGL */}
+    {/* WebGL живёт под всем */}
+    {/* z-0 — в компоненте WebGLBackground */}
+
+    {/* ЛЁГКИЙ затемняющий градиент, НЕ УБИВАЕТ ПОЛОСЫ */}
     <div
       className="
         absolute inset-0
         z-[1]
         bg-gradient-to-b
         from-transparent
-        via-transparent
-        to-background/80
+        via-black/10
+        to-black/40
         pointer-events-none
       "
     />
 
-    {/* локальный 2D canvas (орбиты / планеты) */}
+    {/* 2D canvas (орбиты / планеты) */}
     <canvas
       ref={canvasRef}
       className="
@@ -149,15 +152,15 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     />
 
     {/* КОНТЕНТ */}
-    <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+    <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-40">
       <h1
         className="
           font-orbitron
           font-bold
           text-5xl md:text-7xl
-          text-[#0F1020]
+          text-white
           mb-6
-          drop-shadow-[0_2px_12px_rgba(255,255,255,0.35)]
+          drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)]
         "
       >
         A Coordination Layer for Digital Networks
@@ -167,7 +170,7 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
         className="
           font-source-sans
           text-xl md:text-2xl
-          text-[#2A2C4A]
+          text-white/70
           mb-12
         "
       >

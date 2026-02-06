@@ -104,32 +104,30 @@ export default function LandingPageInteractive() {
 
   return (
     <>
-      {/* 🔥 WEBGL ФОН */}
-      <WebGLBackground />
+  <WebGLBackground />
 
-      {/* 🔥 ВЕСЬ КОНТЕНТ СТРОГО ПОВЕРХ */}
-      <div className="relative z-10">
-        <TopLeftOrgSwitch />
-        <Header />
+  <main className="relative z-10">
+    <TopLeftOrgSwitch />
+    <Header />
 
-        <HeroSection
-          onExploreClick={handleExploreClick}
-          onInvestmentClick={handleInvestmentClick}
-        />
+    <HeroSection
+      onExploreClick={handleExploreClick}
+      onInvestmentClick={handleInvestmentClick}
+    />
 
-        <EcosystemShowcase onProjectClick={handleProjectClick} />
-        <CommunitySection />
-        <FooterSection />
+    <EcosystemShowcase onProjectClick={handleProjectClick} />
+    <CommunitySection />
+    <FooterSection />
 
-        <AnchorNavigation />
-        <ProgressIndicator />
-      </div>
+    <AnchorNavigation />
+    <ProgressIndicator />
+  </main>
 
-      <OrbitalProjectModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        project={selectedProject}
-      />
-    </>
+  <OrbitalProjectModal
+    isOpen={isModalOpen}
+    onClose={handleCloseModal}
+    project={selectedProject}
+  />
+</>
   );
 }

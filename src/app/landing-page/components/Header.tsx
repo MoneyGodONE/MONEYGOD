@@ -21,7 +21,7 @@ export default function Header() {
     Elysium
   </span>
 
-  <div className="ml-[120px]">
+  <div className="ml-[90px]">
     <div className="scale-[1.6] md:scale-[2]">
       <RotatingO />
     </div>
@@ -29,38 +29,34 @@ export default function Header() {
 </div>
 
           {/* ПРАВО: меню с подложкой */}
-<div className="w-1/3 flex justify-end items-center gap-4">
-  {/* Desktop menu */}
-  <div
-    className="
-      hidden md:flex
-      items-center gap-5
-      px-5 py-3
-      rounded-xl
-      backdrop-blur-md
-      bg-black/60
-      border border-white/20
-      text-white
-    "
-  >
-    <button className="hover:text-yellow-400 transition">Ecosystem</button>
-    <button className="hover:text-yellow-400 transition">Investment</button>
-    <button className="hover:text-yellow-400 transition">Roadmap</button>
-    <button className="hover:text-yellow-400 transition">Security</button>
-    <button className="hover:text-yellow-400 transition">Community</button>
-  </div>
-
-  {/* Mobile */}
-  <button
-    onClick={() => setMenuOpen(true)}
-    className="md:hidden relative z-50 p-2"
-    aria-label="Open menu"
-  >
-    <span className="block w-6 h-[2px] bg-white mb-1" />
-    <span className="block w-6 h-[2px] bg-white mb-1" />
-    <span className="block w-6 h-[2px] bg-white" />
+<div className="hidden md:flex items-center gap-5 px-5 py-3 rounded-xl backdrop-blur-md bg-black/90 border border-white/20 text-white">
+  <button className="hover:text-yellow-400 transition">
+    Ecosystem
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Investment
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Roadmap
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Security
+  </button>
+  <button className="hover:text-yellow-400 transition">
+    Community
   </button>
 </div>
+
+{/* Mobile */}
+<button
+  onClick={() => setMenuOpen(true)}
+  className="md:hidden relative z-50 p-2"
+  aria-label="Open menu"
+>
+  <span className="block w-6 h-[2px] bg-white mb-1" />
+  <span className="block w-6 h-[2px] bg-white mb-1" />
+  <span className="block w-6 h-[2px] bg-white" />
+</button>
         </div>
       </header>
 

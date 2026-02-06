@@ -119,35 +119,18 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
   }, [isHydrated]);
 
   return (
-    <section
-      className="
-        relative
-        min-h-[85vh]
-        flex
-        items-center
-        justify-center
-        overflow-hidden
-        -mt-32
-      "
-    >
-      {/* мягкий градиент, НЕ перекрывает WebGL */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-background/80" />
+  <section className="relative min-h-[70vh] flex items-start justify-center bg-background overflow-hidden -mt-32 pt-0">
+    {/* WebGL и полосы — ниже по DOM, ничего не перекрываем */}
 
-      {/* локальный 2D canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-[2] pointer-events-none"
-      />
+    {/* КОНТЕНТ */}
+    <div className="relative z-20 text-center px-4 pt-40">
+      <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
+        A Coordination Layer for Digital Networks
+      </h1>
 
-      {/* контент */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-        <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
-          A Coordination Layer for Digital Networks
-        </h1>
-
-        <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
-          Infrastructure, research and ecosystem growth — aligned.
-        </p>
+      <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
+        Infrastructure, research and ecosystem growth — aligned.
+      </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button

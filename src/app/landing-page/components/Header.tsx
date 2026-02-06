@@ -21,10 +21,11 @@ export default function Header() {
               Elysium
             </span>
 
-            <div className="scale-[1.6] md:scale-[2] translate-x-[66px]">
-              <RotatingO />
-            </div>
-          </div>
+            <div className="ml-[120px]">
+  <div className="scale-[1.6] md:scale-[2]">
+    <RotatingO />
+  </div>
+</div>
 
           {/* ПРАВО: меню с подложкой */}
           <div className="w-1/3 flex justify-end">

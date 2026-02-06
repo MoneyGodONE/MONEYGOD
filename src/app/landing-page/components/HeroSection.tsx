@@ -112,70 +112,42 @@ const HeroSection = ({ onExploreClick, onInvestmentClick }: HeroSectionProps) =>
     };
   }, [isHydrated]);
 
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [isHydrated]);
+
   return (
-  <section
-    className="
-      relative
-      min-h-[70vh]
-      flex
-      items-start
-      justify-center
-      overflow-hidden
-      -mt-32
-      pt-0
-    "
-  >
-    {/* WebGL живёт под всем */}
-    {/* z-0 — в компоненте WebGLBackground */}
-
-    {/* ЛЁГКИЙ затемняющий градиент, НЕ УБИВАЕТ ПОЛОСЫ */}
-    <div
+    <section
       className="
-        absolute inset-0
-        z-[1]
-        bg-gradient-to-b
-        from-transparent
-        via-black/10
-        to-black/40
-        pointer-events-none
+        relative
+        min-h-[85vh]
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+        -mt-32
       "
-    />
+    >
+      {/* мягкий градиент, НЕ перекрывает WebGL */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-background/80" />
 
-    {/* 2D canvas (орбиты / планеты) */}
-    <canvas
-      ref={canvasRef}
-      className="
-        absolute inset-0
-        z-[2]
-        pointer-events-none
-      "
-    />
+      {/* локальный 2D canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-[2] pointer-events-none"
+      />
 
-    {/* КОНТЕНТ */}
-    <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-40">
-      <h1
-        className="
-          font-orbitron
-          font-bold
-          text-5xl md:text-7xl
-          text-white
-          mb-6
-          drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)]
-        "
-      >
-        A Coordination Layer for Digital Networks
-      </h1>
+      {/* контент */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+        <h1 className="font-orbitron font-bold text-5xl md:text-7xl text-text-primary mb-6">
+          A Coordination Layer for Digital Networks
+        </h1>
 
-      <p
-        className="
-          font-source-sans
-          text-xl md:text-2xl
-          text-white/70
-          mb-12
-        "
-      >
-        Infrastructure, research and ecosystem growth — aligned.
-      </p>
+        <p className="font-source-sans text-xl md:text-2xl text-text-secondary mb-12">
+          Infrastructure, research and ecosystem growth — aligned.
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/index.css';
+import Script from 'next/script';
 
 export const viewport = {
   width: 'device-width',
@@ -25,8 +26,22 @@ export default function RootLayout({
     <html lang="en">
       <body>{children}
 
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmgoorbita6846back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-58NS4ZFQH7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-58NS4ZFQH7', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+          
     </html>
   );
 }
